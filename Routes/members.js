@@ -11,17 +11,16 @@ router.get('/' , (req,res)=> {
 
 router.post('/' , (req,res)=> {
     const member = req.body;
-
-    members.push({ ...member, id: uuidv4() });
- 
- res.send(`Member with name ${member.firstName} was added succesfully`)
+ members.push({ ...member, id: uuidv4() });
+    
+ res.status(201).send(`Member with name ${member.firstName} was added succesfully`)
 });
 
 router.delete('/:id' ,(req,res) =>{
 
     const { id } =req.params;
     members = members.filter((member)=> member.id !== id);
-    res.send (`User with ${uuidv4() } deleted `);
+    res.status(201).send (`User with ${uuidv4() } deleted `);
 });
 
 
